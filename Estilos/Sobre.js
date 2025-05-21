@@ -47,6 +47,14 @@ export const estilo = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
   },
+
+  autor: {
+    color:'#ffdb73'
+  },
+
+  info: {
+  color:'white',
+  },
   botaoTexto: {
     color: '#ffdb73',
     fontSize: 16,

@@ -1,29 +1,34 @@
 {
-    "expo": {
-      "name": "Fogo",
-      "slug": "fogo",
-      "version": "1.0.0",
-      "orientation": "portrait",
-      "icon": "./assets/julia.png",
-      "userInterfaceStyle": "dark",
-      "splash": {
-        "image": "./assets/ifsc.png",
-        "resizeMode": "contain",
-        "backgroundColor": ""
+  "expo": {
+    "name": "Biblioteca caronte",
+    "slug": "fogo",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/caronte.png",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "image": "./assets/ty.png",
+      "resizeMode": "contain",
+      "backgroundColor": "black"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "icon": "./assets/icon.png"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "black"
       },
-      "assetBundlePatterns": [
-        "**/*"
-      ],
-      "ios": {
-        "supportsTablet": true,
-        "icon": "./assets/icon.png"
-      },
-      "android": {
-        "adaptiveIcon": {
-          "foregroundImage": "./assets/adaptive-icon.png",
-          "backgroundColor": "#ffffff"
-        }
+      "package": "com.micheljean.fogo"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "f1319d45-5c43-42ea-bf55-df022624d5c7"
       }
     }
   }
-  
+}

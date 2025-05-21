@@ -32,4 +32,40 @@ export const estilo = StyleSheet.create({
     lineHeight: 22,
     textAlign: 'justify',
   },
+  botao: {
+    marginTop: 30,
+    backgroundColor: '#222',
+    paddingVertical: 14,
+    paddingHorizontal: 24,
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: '#ffdb73',
+    alignItems: 'center',
+    shadowColor: '#ffdb73',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.4,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+
+  autor: {
+    color:'#ffdb73'
+  },
+  botaoSecundario:{
+marginTop:26,
+borderColor:'white',
+borderWidth:1,
+borderRadius:30,
+},
+
+  info: {
+  color:'white',
+  },
+  botaoTexto: {
+    color: '#ffdb73',
+    fontSize: 16,
+    fontWeight: 'bold',
+    textTransform: 'uppercase',
+  },
+
 });
