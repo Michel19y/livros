@@ -35,11 +35,12 @@ export default function Home() {
   }, [categoriaSelecionada]);
 
   return (
-
     <ScrollView style={estilo.container}>
+      {/* Barra de status */}
+      <StatusBar backgroundColor="#fff" barStyle="dark-content" />
+
       {/* Avatar e título */}
       <View style={{ alignItems: 'center', marginBottom: 16 }}>
-      <StatusBar></StatusBar>
         <Image
           source={require('../assets/julia.jpg')}
           style={{
@@ -54,13 +55,18 @@ export default function Home() {
         <Text style={estilo.titulo}>Livraria Caronte</Text>
       </View>
 
+      {/* Subtítulo */}
       <Text style={estilo.subtitulo}>
         Atravessando mundos através das palavras. Embarque com Caronte rumo a histórias que ecoam além da vida...
       </Text>
 
+      {/* Categorias */}
       <Text style={estilo.secao}>🎯 Categorias:</Text>
-
-      <ScrollView horizontal showsHorizontalScrollIndicator={false} style={estilo.categoriasContainer}>
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        style={estilo.categoriasContainer}
+      >
         {categoriasDisponiveis.map((cat) => (
           <TouchableOpacity
             key={cat}
@@ -82,8 +88,8 @@ export default function Home() {
         ))}
       </ScrollView>
 
+      {/* Lista de livros */}
       <Text style={estilo.secao}>📚 Livros em "{categoriaSelecionada}":</Text>
-
       <FlatList
         data={livros}
         horizontal
@@ -109,6 +115,7 @@ export default function Home() {
         }}
       />
 
+      {/* Botão para explorar mais */}
       <TouchableOpacity
         style={estilo.botao}
         onPress={() => navigation.navigate('Busca')}
