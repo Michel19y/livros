@@ -3,7 +3,8 @@ import { StyleSheet } from 'react-native';
 export const estilo = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#111', // escuridão do submundo
+    backgroundColor: '#111',
+    marginTop:7,
     padding: 20,
   },
   input: {

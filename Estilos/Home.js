@@ -5,6 +5,7 @@ export const estilo = StyleSheet.create({
     flex: 1,
     backgroundColor: '#111',
     paddingTop: 50,
+
     paddingHorizontal: 16,
   },
   titulo: {

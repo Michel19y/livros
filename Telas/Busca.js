@@ -6,7 +6,8 @@ import {
   Image,
   Text,
   StatusBar,
-  TouchableOpacity
+  TouchableOpacity,
+  Keyboard
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { estilo } from '../Estilos/Busca';
@@ -39,7 +40,7 @@ export default function Busca() {
 
   return (
     <View style={estilo.container}>
-      <StatusBar></StatusBar>
+      <StatusBar />
       <TextInput
         placeholder="Digite o nome do livro..."
         placeholderTextColor="#aaa"
@@ -50,14 +51,18 @@ export default function Busca() {
       />
 
       <FlatList
-        data={resultados}
+        data={resultados.filter(item => item.volumeInfo && item.volumeInfo.title)}
         keyExtractor={(item) => item.id}
+        keyboardShouldPersistTaps="handled" // 👈 isso resolve o toque com teclado aberto
         renderItem={({ item }) => {
           const info = item.volumeInfo;
           return (
             <TouchableOpacity
               style={estilo.card}
-              onPress={() => navigation.navigate('Detalhes', { livro: item })}
+              onPress={() => {
+                Keyboard.dismiss(); // 👈 fecha o teclado ao tocar
+                navigation.navigate('Detalhes', { livro: item });
+              }}
             >
               {info.imageLinks?.thumbnail ? (
                 <Image
@@ -72,15 +77,6 @@ export default function Busca() {
           );
         }}
       />
-
-      <View style={estilo.botoesContainer}>
-        <TouchableOpacity style={estilo.botao} onPress={() => navigation.navigate('Estige')}>
-          <Text style={estilo.botaoTexto}>Voltar ao Estige</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={estilo.botao} onPress={() => navigation.navigate('Sobre')}>
-          <Text style={estilo.botaoTexto}>Sobre Caronte</Text>
-        </TouchableOpacity>
-      </View>
     </View>
   );
 }

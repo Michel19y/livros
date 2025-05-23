@@ -4,12 +4,12 @@
     "slug": "fogo",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "userInterfaceStyle": "dark",
+    "icon": "./assets/julia.jpg",
+    "userInterfaceStyle": "#000000",
     "splash": {
-      "image": "./assets/ty.png",
+      "image": "./assets/torre.json",
       "resizeMode": "contain",
-      "backgroundColor": "black"
+      "backgroundColor": "#000000" 
     },
     "assetBundlePatterns": [
       "**/*"

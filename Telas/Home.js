@@ -36,8 +36,8 @@ export default function Home() {
 
   return (
     <ScrollView style={estilo.container}>
-      {/* Barra de status */}
-      <StatusBar backgroundColor="#fff" barStyle="dark-content" />
+     
+      <StatusBar></StatusBar>
 
       {/* Avatar e título */}
       <View style={{ alignItems: 'center', marginBottom: 16 }}>
@@ -115,13 +115,7 @@ export default function Home() {
         }}
       />
 
-      {/* Botão para explorar mais */}
-      <TouchableOpacity
-        style={estilo.botao}
-        onPress={() => navigation.navigate('Busca')}
-      >
-        <Text style={estilo.botaoTexto}>Explorar Livros</Text>
-      </TouchableOpacity>
+     
     </ScrollView>
   );
 }

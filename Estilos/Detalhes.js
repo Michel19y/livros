@@ -5,6 +5,7 @@ export const estilo = StyleSheet.create({
     flexGrow: 1,
     backgroundColor: '#111',
     padding: 20,
+    
     alignItems: 'center',
   },
   titulo: {
@@ -53,9 +54,9 @@ export const estilo = StyleSheet.create({
   },
   botaoSecundario:{
 marginTop:26,
-borderColor:'white',
-borderWidth:1,
-borderRadius:30,
+borderColor:'#ffdb73',
+borderWidth:4,
+
 },
 
   info: {
