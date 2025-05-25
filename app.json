@@ -1,34 +1,30 @@
 {
   "expo": {
-    "name": "Biblioteca caronte",
+    "name": "Livraria caronte",
     "slug": "fogo",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/julia.jpg",
-    "userInterfaceStyle": "#000000",
+    "icon": "./assets/img/caronte.jpg",
+    "userInterfaceStyle": "dark",
     "splash": {
-      "image": "./assets/torre.json",
+      
       "resizeMode": "contain",
-      "backgroundColor": "#000000" 
+      "backgroundColor": "black" 
     },
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
       "supportsTablet": true,
-      "icon": "./assets/icon.png"
+      "icon": "./assets/img/caronte.jpg"
     },
     "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "black"
-      },
-      "package": "com.micheljean.fogo"
-    },
-    "extra": {
-      "eas": {
-        "projectId": "f1319d45-5c43-42ea-bf55-df022624d5c7"
-      }
-    }
+  "adaptiveIcon": {
+    "foregroundImage": "./assets/img/caronte.jpg",
+    "backgroundColor": "#FF0000"
+
+  }
+}
+
   }
 }

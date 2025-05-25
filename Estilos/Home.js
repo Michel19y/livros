@@ -1,23 +1,20 @@
+// Estilos/Home.js
 import { StyleSheet } from 'react-native';
 
 export const estilo = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#111',
     paddingTop: 50,
-
     paddingHorizontal: 16,
   },
   titulo: {
     fontSize: 28,
-    color: '#ffdb73',
     fontWeight: 'bold',
     textAlign: 'center',
     marginBottom: 12,
   },
   subtitulo: {
     fontSize: 15,
-    color: '#c0c0c0',
     textAlign: 'center',
     marginBottom: 30,
     fontStyle: 'italic',
@@ -26,7 +23,6 @@ export const estilo = StyleSheet.create({
   },
   secao: {
     fontSize: 18,
-    color: '#ffdb73',
     marginBottom: 12,
     fontWeight: '600',
   },
@@ -38,34 +34,25 @@ export const estilo = StyleSheet.create({
   categoriaBotao: {
     paddingVertical: 10,
     paddingHorizontal: 18,
-    backgroundColor: '#1e1e1e',
     borderRadius: 22,
     marginRight: 10,
     borderWidth: 1,
-    borderColor: '#ffdb73',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.3,
-    shadowRadius: 3,
-    elevation: 4,
+   
   },
   categoriaTexto: {
     fontSize: 14,
-    color: '#ffdb73',
     fontWeight: '500',
   },
   categoriaBotaoSelecionado: {
-    backgroundColor: '#ffdb73',
+    // Cor será passada dinamicamente
   },
   categoriaTextoSelecionado: {
-    color: '#111',
     fontWeight: 'bold',
   },
   card: {
     marginRight: 16,
     alignItems: 'center',
     width: 130,
-    backgroundColor: '#1a1a1a',
     padding: 10,
     borderRadius: 10,
     shadowColor: '#000',
@@ -81,7 +68,6 @@ export const estilo = StyleSheet.create({
     borderRadius: 6,
   },
   texto: {
-    color: '#eee',
     textAlign: 'center',
     fontSize: 13,
     marginTop: 8,
@@ -90,21 +76,17 @@ export const estilo = StyleSheet.create({
   botao: {
     marginTop: 40,
     marginBottom: 60,
-    backgroundColor: '#222',
     paddingVertical: 16,
     paddingHorizontal: 30,
     borderRadius: 14,
     borderWidth: 1.5,
-    borderColor: '#ffdb73',
     alignItems: 'center',
-    shadowColor: '#ffdb73',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.5,
     shadowRadius: 5,
     elevation: 6,
   },
   botaoTexto: {
-    color: '#ffdb73',
     fontSize: 16,
     fontWeight: 'bold',
     textTransform: 'uppercase',

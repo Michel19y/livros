@@ -1,19 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import {
-  View,
-  TextInput,
-  FlatList,
-  Image,
-  Text,
-  StatusBar,
-  TouchableOpacity,
-  Keyboard
-} from 'react-native';
+import { StatusBar } from 'expo-status-bar';
+
+import {View,TextInput,FlatList,Image,Text,TouchableOpacity,  Keyboard,} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { estilo } from '../Estilos/Busca';
+import { useCores } from '../Contexts/CoresContext';
 
 export default function Busca() {
   const navigation = useNavigation();
+  const { tema } = useCores();
   const [query, setQuery] = useState('');
   const [resultados, setResultados] = useState([]);
 
@@ -30,7 +25,7 @@ export default function Busca() {
   };
 
   useEffect(() => {
-    buscarLivros(); // busca inicial com 'livros populares'
+    buscarLivros();
   }, []);
 
   const handleBuscar = () => {
@@ -39,12 +34,17 @@ export default function Busca() {
   };
 
   return (
-    <View style={estilo.container}>
-      <StatusBar />
+    <View style={[estilo.container, { backgroundColor: tema.fundo }]}>
+     <StatusBar 
+  style={tema.fundo === '#ffffff' ? 'dark' : 'light'}
+  backgroundColor={tema.ativo}
+/>
+
+
       <TextInput
         placeholder="Digite o nome do livro..."
-        placeholderTextColor="#aaa"
-        style={estilo.input}
+        placeholderTextColor={tema.inativo}
+        style={[estilo.input, { color: tema.ativo, borderColor: tema.ativo }]}
         value={query}
         onChangeText={setQuery}
         onSubmitEditing={handleBuscar}
@@ -53,26 +53,34 @@ export default function Busca() {
       <FlatList
         data={resultados.filter(item => item.volumeInfo && item.volumeInfo.title)}
         keyExtractor={(item) => item.id}
-        keyboardShouldPersistTaps="handled" // 👈 isso resolve o toque com teclado aberto
+        keyboardShouldPersistTaps="handled"
         renderItem={({ item }) => {
           const info = item.volumeInfo;
           return (
-            <TouchableOpacity
-              style={estilo.card}
-              onPress={() => {
-                Keyboard.dismiss(); // 👈 fecha o teclado ao tocar
-                navigation.navigate('Detalhes', { livro: item });
-              }}
-            >
-              {info.imageLinks?.thumbnail ? (
-                <Image
-                  source={{ uri: info.imageLinks.thumbnail }}
-                  style={estilo.capa}
-                />
-              ) : (
-                <Text style={estilo.texto}>Sem imagem</Text>
-              )}
-              <Text style={estilo.texto}>{info.title}</Text>
+          <TouchableOpacity
+  style={[
+    estilo.card,
+    {
+      backgroundColor: tema?.fundo || '#1a1a1a',
+    },
+  ]}
+  onPress={() => {
+    Keyboard.dismiss();
+    navigation.navigate('Detalhes', { livro: item });
+  }}
+>
+
+              <Image
+                source={
+                  info.imageLinks?.thumbnail
+                    ? { uri: info.imageLinks.thumbnail }
+                    : require('../assets/img/NotFound.jpeg')
+                }
+                style={estilo.capa}
+              />
+              <Text style={[estilo.texto, { color: tema.ativo }]} numberOfLines={2}>
+                {info.title}
+              </Text>
             </TouchableOpacity>
           );
         }}
