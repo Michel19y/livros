@@ -74,7 +74,7 @@ export default function Busca() {
                 source={
                   info.imageLinks?.thumbnail
                     ? { uri: info.imageLinks.thumbnail }
-                    : require('../assets/img/NotFound.jpeg')
+                    : require('../assets/img/not.png')
                 }
                 style={estilo.capa}
               />

@@ -1,4 +1,3 @@
-// Estilos/Home.js
 import { StyleSheet } from 'react-native';
 
 export const estilo = StyleSheet.create({
@@ -37,17 +36,10 @@ export const estilo = StyleSheet.create({
     borderRadius: 22,
     marginRight: 10,
     borderWidth: 1,
-   
   },
   categoriaTexto: {
     fontSize: 14,
     fontWeight: '500',
-  },
-  categoriaBotaoSelecionado: {
-    // Cor será passada dinamicamente
-  },
-  categoriaTextoSelecionado: {
-    fontWeight: 'bold',
   },
   card: {
     marginRight: 16,
@@ -91,5 +83,72 @@ export const estilo = StyleSheet.create({
     fontWeight: 'bold',
     textTransform: 'uppercase',
     letterSpacing: 1,
+  },
+  temaContainer: {
+    alignItems: 'flex-end',
+  },
+  temaBotao: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderWidth: 1,
+    marginBottom: 10,
+    paddingHorizontal: 16,
+    paddingVertical: 10,
+    borderRadius: 20,
+  },
+  temaTexto: {
+    marginRight: 8,
+  },
+  dropdown: {
+    position: 'absolute',
+    top: 46,
+    right: 0,
+    borderWidth: 1,
+    borderRadius: 10,
+    paddingVertical: 8,
+    width: 220,
+    zIndex: 10,
+    elevation: 10,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+  },
+  dropdownItem: {
+    paddingVertical: 10,
+    width: '100%',
+    alignItems: 'center',
+  },
+  capaContainer: {
+    width: 100,
+    height: 150,
+    borderRadius: 6,
+    overflow: 'hidden',
+    marginBottom: 8,
+  },
+  
+  header: {
+    alignItems: 'center',
+    marginBottom: 19,
+  },
+  avatar: {
+    width: 90,
+    height: 90,
+    borderRadius: 100,
+    borderWidth: 2,
+    marginBottom: 10,
+  },
+  semCapa: {
+    width: 54,
+    height: 80,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 8,
+    marginBottom: 8,
+  },
+  video: {
+    width: 120,
+    height: 225,
+    borderRadius: 8,
   },
 });

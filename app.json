@@ -7,9 +7,8 @@
     "icon": "./assets/img/caronte.jpg",
     "userInterfaceStyle": "dark",
     "splash": {
-      
       "resizeMode": "contain",
-      "backgroundColor": "black" 
+      "backgroundColor": "black"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -19,12 +18,11 @@
       "icon": "./assets/img/caronte.jpg"
     },
     "android": {
-  "adaptiveIcon": {
-    "foregroundImage": "./assets/img/caronte.jpg",
-    "backgroundColor": "#FF0000"
-
-  }
-}
-
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/img/caronte.jpg",
+        "backgroundColor": "#FF0000"
+      },
+      "package": "com.micheljean.fogo"
+    }
   }
 }
