@@ -1,57 +1,49 @@
 import { StyleSheet } from 'react-native';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 export const estilo = StyleSheet.create({
   container: {
     flexGrow: 1,
-    padding: 20,
+    paddingHorizontal: wp('6%'),
+    paddingVertical: hp('4%'),
     alignItems: 'center',
+    backgroundColor: '#000',
   },
   titulo: {
-    fontSize: 22,
-    marginTop: 17,
+    fontSize: hp('2.8%'),
     fontWeight: 'bold',
     textAlign: 'center',
-    marginBottom: 20,
-    // color será aplicado dinamicamente
+    marginBottom: hp('3%'),
+    color: '#FFD700',
   },
   capa: {
-    width: 180,
-    height: 260,
+    width: wp('85%'),
+    height: hp('30%'),
     resizeMode: 'cover',
-    borderRadius: 10,
-    marginBottom: 20,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.7,
-    shadowRadius: 6,
-    elevation: 8,
+    borderRadius: wp('3%'),
+    marginBottom: hp('3%'),
   },
   texto: {
-    fontSize: 15,
-    lineHeight: 22,
+    fontSize: hp('2%'),
+    lineHeight: hp('3%'),
     textAlign: 'justify',
-    // cor aplicada dinamicamente
+    color: '#FFD700',
+    marginBottom: hp('2.5%'),
   },
   botao: {
-    marginTop: 30,
-    paddingVertical: 14,
-    paddingHorizontal: 24,
-    borderRadius: 12,
+    marginTop: hp('4%'),
+    paddingVertical: hp('2%'),
+    paddingHorizontal: wp('8%'),
+    borderRadius: wp('3%'),
     borderWidth: 1,
+    borderColor: '#FFD700',
     alignItems: 'center',
-  
-    // cores aplicadas dinamicamente
+    elevation: 5,
   },
   botaoTexto: {
-    fontSize: 16,
+    fontSize: hp('2.2%'),
     fontWeight: 'bold',
+    color: '#FFD700',
     textTransform: 'uppercase',
-    // cor aplicada dinamicamente
-  },
-  autor: {
-    // pode usar cor dinamicamente se necessário
-  },
-  info: {
-    // cor dinâmica se quiser
   },
 });
