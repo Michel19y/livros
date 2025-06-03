@@ -38,7 +38,7 @@ export const estilo = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#FFD700',
     alignItems: 'center',
-    elevation: 5,
+   
   },
   botaoTexto: {
     fontSize: hp('2.2%'),

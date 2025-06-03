@@ -3,6 +3,7 @@ import { View, Text, Image, ScrollView, TouchableOpacity, Linking } from 'react-
 import { estilo } from '../Estilos/Detalhes';
 import { useNavigation } from '@react-navigation/native';
 import { useCores } from '../Contexts/CoresContext';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 export default function Detalhes({ route }) {
   const { livro } = route.params || {};
@@ -37,7 +38,7 @@ export default function Detalhes({ route }) {
         source={
           info.imageLinks?.thumbnail
             ? { uri: info.imageLinks.thumbnail }
-            : require('../assets/img/NotFound.jpeg')
+            : require('../assets/img/not.png')
         }
         style={estilo.capa}
       />
@@ -78,19 +79,32 @@ export default function Detalhes({ route }) {
           : 'Sem descrição disponível.'}
       </Text>
 
-      {info.previewLink && (
-        <TouchableOpacity
-          style={[estilo.botaoSecundario, { borderColor: tema.ativo }]}
-          onPress={abrirPreview}
-        >
-          <Text style={[estilo.botaoTexto, { color: tema.ativo }]}>Ver trecho gratuito</Text>
-        </TouchableOpacity>
-      )}
+      {info.previewLink ? (
+  <TouchableOpacity
+    style={[estilo.botaoSecundario, { borderColor: tema.ativo }]}
+    onPress={abrirPreview}
+  >
+    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+      <Text style={[estilo.botaoTexto, { color: tema.ativo, marginRight: 8 }]}>
+        Ver trecho gratuito
+      </Text>
+      <Icon name="file-pdf-box" size={50} color={tema.ativo} />
+    </View>
+  </TouchableOpacity>
+) : (
+  <Text style={[estilo.botaoTexto, { color: tema.inativo, textAlign: 'center', marginTop: 10 }]}>
+    Link indisponível
+  </Text>
+)}
+
 
       <TouchableOpacity
         style={[
           estilo.botao,
-          { borderColor: tema.ativo, backgroundColor: tema.fundo === '#ffffff' ? '#222' : '#222' }
+          {
+            borderColor: tema.ativo,
+            backgroundColor: tema.fundo === '#ffffff' ? '#222' : '#222',
+          },
         ]}
         onPress={() => navigation.goBack()}
       >

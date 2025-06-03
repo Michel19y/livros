@@ -1,4 +1,3 @@
-// Home.js
 import React, { useEffect, useState, useRef } from 'react';
 import {
   Text,
@@ -8,10 +7,11 @@ import {
   ScrollView,
   StatusBar,
   View,
+  ActivityIndicator,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { estilo } from '../Estilos/Home';
-import { Video } from 'expo-av';
+
 import { FontAwesome } from '@expo/vector-icons';
 
 import { useCores } from '../Contexts/CoresContext';
@@ -39,9 +39,11 @@ export default function Home() {
   const [categoriaSelecionada, setCategoriaSelecionada] = useState('Ficção');
   const [mostrarDropdown, setMostrarDropdown] = useState(false);
   const [visiveis, setVisiveis] = useState(new Set());
+  const [loading, setLoading] = useState(false); // Estado loading adicionado
   const navigation = useNavigation();
 
   useEffect(() => {
+    setLoading(true); // começa carregando
     fetch(
       `https://www.googleapis.com/books/v1/volumes?q=subject:${encodeURIComponent(
         categoriaSelecionada
@@ -49,7 +51,8 @@ export default function Home() {
     )
       .then((res) => res.json())
       .then((data) => setLivros(data.items || []))
-      .catch((err) => console.error('Erro ao buscar livros:', err));
+      .catch((err) => console.error('Erro ao buscar livros:', err))
+      .finally(() => setLoading(false)); // termina carregando
   }, [categoriaSelecionada]);
 
   const viewabilityConfig = { itemVisiblePercentThreshold: 50 };
@@ -84,7 +87,12 @@ export default function Home() {
         </TouchableOpacity>
 
         {mostrarDropdown && (
-          <View style={[estilo.dropdown, { backgroundColor: tema.fundo, borderColor: tema.ativo }]}>
+          <View
+            style={[
+              estilo.dropdown,
+              { backgroundColor: tema.fundo, borderColor: tema.ativo },
+            ]}
+          >
             {Object.keys(nomesBonitos).map((modoNome) => (
               <TouchableOpacity
                 key={modoNome}
@@ -166,50 +174,63 @@ export default function Home() {
         <FontAwesome name="book" size={20} color={tema.ativo} /> Livros em "{categoriaSelecionada}":
       </Text>
 
-      <FlatList
-        data={livros}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        keyExtractor={(item) => item.id}
-        contentContainerStyle={{ paddingBottom: 20 }}
-        onViewableItemsChanged={onViewableItemsChanged.current}
-        viewabilityConfig={viewabilityConfig}
-        renderItem={({ item }) => {
-          const info = item.volumeInfo;
-          const thumbnail = info.imageLinks?.thumbnail;
-          const isVisible = visiveis.has(item.id);
+      {/* Mostrar o loading ou a lista */}
+      {loading ? (
+        <View
+          style={{
+            height: 200,
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <ActivityIndicator size="large" color={tema.ativo} />
+          <Text style={{ color: tema.ativo, marginTop: 10 }}>Carregando livros...</Text>
+        </View>
+      ) : (
+        <FlatList
+          data={livros}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          keyExtractor={(item) => item.id}
+          contentContainerStyle={{ paddingBottom: 20 }}
+          onViewableItemsChanged={onViewableItemsChanged.current}
+          viewabilityConfig={viewabilityConfig}
+          renderItem={({ item }) => {
+            const info = item.volumeInfo;
+            const thumbnail = info.imageLinks?.thumbnail;
+            const isVisible = visiveis.has(item.id);
 
-          return (
-            <TouchableOpacity
-              style={[estilo.card, { backgroundColor: tema.fundo }]}
-              onPress={() => navigation.navigate('Detalhes', { livro: item })}
-            >
-             <View style={estilo.capaContainer}>
-  {thumbnail ? (
-    <Image source={{ uri: thumbnail }} style={estilo.capa} />
-  ) : isVisible ? (
-    <Image
-      source={require('../assets/img/not.png')}
-      style={estilo.video}
-      resizeMode="cover"
-      isLooping
-      shouldPlay
-      isMuted
-    />
-  ) : (
-    <View style={estilo.semCapa}>
-      <Text style={{ color: tema.ativo, fontSize: 12 }}>Sem capa</Text>
-    </View>
-  )}
-</View>
-<Text style={[estilo.texto, { color: tema.texto }]} numberOfLines={2}>
-  {info.title}
-</Text>
-
-            </TouchableOpacity>
-          );
-        }}
-      />
+            return (
+              <TouchableOpacity
+                style={[estilo.card, { backgroundColor: tema.fundo }]}
+                onPress={() => navigation.navigate('Detalhes', { livro: item })}
+              >
+                <View style={estilo.capaContainer}>
+                  {thumbnail ? (
+                    <Image source={{ uri: thumbnail }} style={estilo.capa} />
+                  ) : isVisible ? (
+                    <Image
+                      source={require('../assets/img/not.png')}
+                      style={estilo.video}
+                      resizeMode="cover"
+                      isLooping
+                      shouldPlay
+                      isMuted
+                    />
+                  ) : (
+                    <View style={estilo.semCapa}>
+                      <Text style={{ color: tema.ativo, fontSize: 12 }}>Sem capa</Text>
+                    </View>
+                  )}
+                </View>
+                <Text style={[estilo.texto, { color: tema.texto }]} numberOfLines={2}>
+                  {info.title}
+                </Text>
+              </TouchableOpacity>
+            );
+          }}
+        />
+      )}
     </ScrollView>
   );
 }

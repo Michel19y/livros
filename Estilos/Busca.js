@@ -23,6 +23,20 @@ export const estilo = StyleSheet.create({
     elevation: 3,
     // backgroundColor é controlado no componente
   },
+  inputContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderWidth: 1,
+    borderRadius: 8,
+    paddingHorizontal: 8,
+    height: 40,
+    marginVertical: 10,
+  },
+  input: {
+    fontSize: 16,
+    paddingVertical: 0,
+  },
+  
   capa: {
     width: 60,
     height: 90,

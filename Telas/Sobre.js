@@ -20,7 +20,7 @@ export default function Sobre() {
           height: 180,
           marginVertical: 20,
           borderRadius: 12,
-          // Talvez queira aplicar uma borda ou sombra usando o tema também
+         
         }}
         resizeMode="cover"
         isLooping
@@ -43,7 +43,7 @@ export default function Sobre() {
         ]}
         onPress={() => navigation.navigate('Busca')}
       >
-        <Text style={[estilo.botaoTexto, { color: tema.ativo }]}>Explorar Livros</Text>
+        <Text style={[estilo.botaoTexto, { color: tema.ativo }]}>Explorar Livros    </Text>
       </TouchableOpacity>
     </View>
   );
