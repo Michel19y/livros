@@ -36,14 +36,14 @@ const nomesBonitos = {
 export default function Home() {
   const { tema, setTemaDireto, modo } = useCores();
   const [livros, setLivros] = useState([]);
-  const [categoriaSelecionada, setCategoriaSelecionada] = useState('Ficção');
+  const [categoriaSelecionada, setCategoriaSelecionada] = useState('Poesia');
   const [mostrarDropdown, setMostrarDropdown] = useState(false);
   const [visiveis, setVisiveis] = useState(new Set());
   const [loading, setLoading] = useState(false); // Estado loading adicionado
   const navigation = useNavigation();
 
   useEffect(() => {
-    setLoading(true); // começa carregando
+    setLoading(true);
     fetch(
       `https://www.googleapis.com/books/v1/volumes?q=subject:${encodeURIComponent(
         categoriaSelecionada
@@ -68,7 +68,6 @@ export default function Home() {
         backgroundColor={tema.ativo}
       />
 
-      {/* Seletor de tema */}
       <View style={estilo.temaContainer}>
         <TouchableOpacity
           onPress={() => setMostrarDropdown(!mostrarDropdown)}

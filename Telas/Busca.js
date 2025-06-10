@@ -1,15 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import {
-  View,
-  TextInput,
-  FlatList,
-  Image,
-  Text,
-  TouchableOpacity,
-  Keyboard,
-  ActivityIndicator,
-  Animated,
-} from 'react-native';
+import {View,TextInput,FlatList,Image,Text,TouchableOpacity,Keyboard,ActivityIndicator,Animated,} from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
