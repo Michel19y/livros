@@ -98,4 +98,4 @@ GitHub: [@Michel19y](https://github.com/Michel19y)
 
 ---
 
-Se quiser, posso gerar as capturas de tela ou diagramas da estrutura para completar o README. Deseja isso?
+
